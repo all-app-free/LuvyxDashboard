@@ -14,52 +14,52 @@
         }
 
         body {
-            background: linear-gradient(135deg, #000000 0%, #001f3f 100%);
+            background: linear-gradient(135deg, #000000 0%, #001a33 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         /* Čas a Datum */
         .header {
             text-align: center;
-            margin-top: 30px;
-            margin-bottom: 30px;
+            margin-top: 15px;
+            margin-bottom: 20px;
         }
 
         #clock {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 200;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(0, 150, 255, 0.4);
         }
 
         #date {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 2px;
+            text-transform: capitalize;
         }
 
         /* Google Vyhledávání */
         .search-container {
             width: 100%;
             max-width: 400px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .search-form {
             display: flex;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 50px;
-            padding: 5px 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             align-items: center;
         }
 
@@ -67,80 +67,79 @@
             background: transparent;
             border: none;
             color: white;
-            padding: 10px;
+            padding: 8px;
             width: 100%;
             outline: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .search-form button {
             background: transparent;
             border: none;
-            color: white;
+            color: rgba(255,255,255,0.6);
             cursor: pointer;
-            padding: 5px;
         }
 
-        /* Mřížka aplikací */
+        /* Mřížka aplikací 3x3 */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr); /* Klíčová změna na 3 sloupce */
+            gap: 12px;
             width: 100%;
             max-width: 450px;
             padding-bottom: 40px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 25px 15px;
+            border-radius: 20px;
+            padding: 18px 5px;
             text-align: center;
             text-decoration: none;
             color: white;
-            transition: transform 0.2s, background 0.3s;
+            transition: transform 0.2s;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            aspect-ratio: 1 / 1; /* Čtvercový formát karet */
         }
 
         .card:active {
-            transform: scale(0.95);
-            background: rgba(255, 255, 255, 0.15);
+            transform: scale(0.9);
+            background: rgba(255, 255, 255, 0.12);
         }
 
         .card i {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Speciální barva pro hru */
-        .card.game i {
-            background: linear-gradient(45deg, #00ff88, #00bd68);
-            -webkit-background-clip: text;
-        }
+        /* Barevné akcenty */
+        .card.game i { background: linear-gradient(45deg, #42e695, #3bb2b8); -webkit-background-clip: text; }
+        .card.creative i { background: linear-gradient(45deg, #f093fb, #f5576c); -webkit-background-clip: text; }
+        .card.utility i { background: linear-gradient(45deg, #feb47b, #ff7e5f); -webkit-background-clip: text; }
 
         .card span {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             font-weight: 500;
-            letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 90%;
         }
 
-        /* Responzivita pro velmi malé telefony */
-        @media (max-width: 350px) {
-            .grid-container {
-                gap: 15px;
-            }
-            #clock {
-                font-size: 2.8rem;
-            }
+        /* Optimalizace pro velmi malé displeje */
+        @media (max-width: 360px) {
+            .grid-container { gap: 8px; }
+            .card i { font-size: 1.5rem; }
+            .card span { font-size: 0.65rem; }
         }
     </style>
 </head>
@@ -153,7 +152,7 @@
 
     <div class="search-container">
         <form class="search-form" action="https://www.google.com/search" method="GET" target="_blank">
-            <input type="text" name="q" placeholder="Hledat na Google..." required>
+            <input type="text" name="q" placeholder="Hledat..." required>
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
     </div>
@@ -171,7 +170,7 @@
 
         <a href="https://all-app-free.github.io/Calendary/" class="card" target="_blank">
             <i class="fas fa-calendar-alt"></i>
-            <span>Calendary</span>
+            <span>Kalendář</span>
         </a>
 
         <a href="https://goblinekkk.github.io/LuvyxVideo/" class="card" target="_blank">
@@ -189,6 +188,26 @@
             <span>Notes</span>
         </a>
 
+        <a href="https://all-app-free.github.io/Canvas/" class="card creative" target="_blank">
+            <i class="fas fa-paint-brush"></i>
+            <span>Canvas</span>
+        </a>
+
+        <a href="https://all-app-free.github.io/LuvyxQR/" class="card utility" target="_blank">
+            <i class="fas fa-qrcode"></i>
+            <span>QR Generátor</span>
+        </a>
+
+        <a href="https://all-app-free.github.io/Weather/" class="card utility" target="_blank">
+            <i class="fas fa-cloud-sun"></i>
+            <span>Počasí</span>
+        </a>
+
+        <a href="https://all-app-free.github.io/Maps/" class="card utility" target="_blank">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>Mapy</span>
+        </a>
+
         <a href="https://all-app-free.github.io/idle-hacker/" class="card game" target="_blank">
             <i class="fas fa-terminal"></i>
             <span>Idle Hacker</span>
@@ -198,18 +217,12 @@
     <script>
         function updateTime() {
             const now = new Date();
-            
-            // Čas
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             document.getElementById('clock').textContent = `${hours}:${minutes}`;
-
-            // Datum
             const options = { weekday: 'long', day: 'numeric', month: 'long' };
             document.getElementById('date').textContent = now.toLocaleDateString('cs-CZ', options);
         }
-
-        // Aktualizace každou sekundu
         setInterval(updateTime, 1000);
         updateTime();
     </script>
