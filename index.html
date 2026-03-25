@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luvyx Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 0%, #001f3f 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Čas a Datum */
+        .header {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        #clock {
+            font-size: 3.5rem;
+            font-weight: 200;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+        }
+
+        #date {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Google Vyhledávání */
+        .search-container {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 40px;
+        }
+
+        .search-form {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 5px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            align-items: center;
+        }
+
+        .search-form input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .search-form button {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Mřížka aplikací */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 25px 15px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s, background 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card:active {
+            transform: scale(0.95);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responzivita pro velmi malé telefony */
+        @media (max-width: 350px) {
+            .grid-container {
+                gap: 15px;
+            }
+            #clock {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div id="clock">00:00</div>
+        <div id="date">Načítání...</div>
+    </div>
+
+    <div class="search-container">
+        <form class="search-form" action="https://www.google.com/search" method="GET" target="_blank">
+            <input type="text" name="q" placeholder="Hledat na Google..." required>
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <div class="grid-container">
+        <a href="https://all-app-free.github.io/Chat/" class="card" target="_blank">
+            <i class="fas fa-comments"></i>
+            <span>Chat</span>
+        </a>
+
+        <a href="https://goblinekkk.github.io/ThrumAI/" class="card" target="_blank">
+            <i class="fas fa-robot"></i>
+            <span>ThrumAI</span>
+        </a>
+
+        <a href="https://all-app-free.github.io/Calendary/" class="card" target="_blank">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Calendary</span>
+        </a>
+
+        <a href="https://goblinekkk.github.io/LuvyxVideo/" class="card" target="_blank">
+            <i class="fas fa-play-circle"></i>
+            <span>LuvyxVideo</span>
+        </a>
+
+        <a href="https://goblinekkk.github.io/Meet-Me/" class="card" target="_blank">
+            <i class="fas fa-video"></i>
+            <span>Meet Me</span>
+        </a>
+
+        <a href="https://all-app-free.github.io/Notes/" class="card" target="_blank">
+            <i class="fas fa-sticky-note"></i>
+            <span>Notes</span>
+        </a>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            
+            // Čas
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}`;
+
+            // Datum
+            const options = { weekday: 'long', day: 'numeric', month: 'long' };
+            document.getElementById('date').textContent = now.toLocaleDateString('cs-CZ', options);
+        }
+
+        // Aktualizace každou sekundu
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
+
