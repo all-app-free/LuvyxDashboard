@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luvyx Dashboard</title>
+    <title>Luvyx Dashboard Pro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -49,7 +49,7 @@
         .search-container {
             width: 100%;
             max-width: 400px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .search-form {
@@ -61,16 +61,17 @@
             padding: 2px 15px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .search-form input {
             background: transparent;
             border: none;
             color: white;
-            padding: 8px;
+            padding: 10px;
             width: 100%;
             outline: none;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .search-form button {
@@ -80,14 +81,14 @@
             cursor: pointer;
         }
 
-        /* Mřížka aplikací 3x3 */
+        /* Mřížka aplikací 3x4 */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Klíčová změna na 3 sloupce */
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             width: 100%;
             max-width: 450px;
-            padding-bottom: 40px;
+            padding-bottom: 30px;
         }
 
         .card {
@@ -96,21 +97,21 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 18px 5px;
+            padding: 15px 5px;
             text-align: center;
             text-decoration: none;
             color: white;
-            transition: transform 0.2s;
+            transition: transform 0.2s, background 0.2s;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            aspect-ratio: 1 / 1; /* Čtvercový formát karet */
+            aspect-ratio: 1 / 1;
         }
 
         .card:active {
-            transform: scale(0.9);
-            background: rgba(255, 255, 255, 0.12);
+            transform: scale(0.92);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .card i {
@@ -132,14 +133,14 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            width: 90%;
+            width: 95%;
         }
 
-        /* Optimalizace pro velmi malé displeje */
+        /* Optimalizace pro malé displeje */
         @media (max-width: 360px) {
-            .grid-container { gap: 8px; }
-            .card i { font-size: 1.5rem; }
-            .card span { font-size: 0.65rem; }
+            .grid-container { gap: 10px; }
+            .card i { font-size: 1.6rem; }
+            #clock { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -206,6 +207,11 @@
         <a href="https://all-app-free.github.io/Maps/" class="card utility" target="_blank">
             <i class="fas fa-map-marked-alt"></i>
             <span>Mapy</span>
+        </a>
+
+        <a href="https://all-app-free.github.io/Luvyx-Spirit-Level/" class="card utility" target="_blank">
+            <i class="fas fa-level-up-alt"></i>
+            <span>Vodováha</span>
         </a>
 
         <a href="https://all-app-free.github.io/idle-hacker/" class="card game" target="_blank">
