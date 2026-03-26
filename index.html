@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luvyx Dashboard Pro</title>
+    <title>Luvyx Dashboard Ultimate</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -24,7 +24,6 @@
             padding: 15px;
         }
 
-        /* Čas a Datum */
         .header {
             text-align: center;
             margin-top: 15px;
@@ -45,7 +44,6 @@
             text-transform: capitalize;
         }
 
-        /* Google Vyhledávání */
         .search-container {
             width: 100%;
             max-width: 400px;
@@ -81,7 +79,6 @@
             cursor: pointer;
         }
 
-        /* Mřížka aplikací 3x4 */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -122,13 +119,14 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Barevné akcenty */
+        /* Speciální barvy */
         .card.game i { background: linear-gradient(45deg, #42e695, #3bb2b8); -webkit-background-clip: text; }
         .card.creative i { background: linear-gradient(45deg, #f093fb, #f5576c); -webkit-background-clip: text; }
         .card.utility i { background: linear-gradient(45deg, #feb47b, #ff7e5f); -webkit-background-clip: text; }
+        .card.fitness i { background: linear-gradient(45deg, #ff512f, #dd2476); -webkit-background-clip: text; }
 
         .card span {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 500;
             white-space: nowrap;
             overflow: hidden;
@@ -136,11 +134,9 @@
             width: 95%;
         }
 
-        /* Optimalizace pro malé displeje */
         @media (max-width: 360px) {
             .grid-container { gap: 10px; }
             .card i { font-size: 1.6rem; }
-            #clock { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -163,71 +159,63 @@
             <i class="fas fa-comments"></i>
             <span>Chat</span>
         </a>
-
         <a href="https://goblinekkk.github.io/ThrumAI/" class="card" target="_blank">
             <i class="fas fa-robot"></i>
             <span>ThrumAI</span>
         </a>
-
         <a href="https://all-app-free.github.io/Calendary/" class="card" target="_blank">
             <i class="fas fa-calendar-alt"></i>
             <span>Kalendář</span>
         </a>
-
         <a href="https://goblinekkk.github.io/LuvyxVideo/" class="card" target="_blank">
             <i class="fas fa-play-circle"></i>
             <span>LuvyxVideo</span>
         </a>
-
         <a href="https://goblinekkk.github.io/Meet-Me/" class="card" target="_blank">
             <i class="fas fa-video"></i>
             <span>Meet Me</span>
         </a>
-
         <a href="https://all-app-free.github.io/Notes/" class="card" target="_blank">
             <i class="fas fa-sticky-note"></i>
             <span>Notes</span>
         </a>
-
         <a href="https://all-app-free.github.io/Canvas/" class="card creative" target="_blank">
             <i class="fas fa-paint-brush"></i>
             <span>Canvas</span>
         </a>
-
         <a href="https://all-app-free.github.io/LuvyxQR/" class="card utility" target="_blank">
             <i class="fas fa-qrcode"></i>
             <span>QR Generátor</span>
         </a>
-
         <a href="https://all-app-free.github.io/Weather/" class="card utility" target="_blank">
             <i class="fas fa-cloud-sun"></i>
             <span>Počasí</span>
         </a>
-
         <a href="https://all-app-free.github.io/Maps/" class="card utility" target="_blank">
             <i class="fas fa-map-marked-alt"></i>
             <span>Mapy</span>
         </a>
-
         <a href="https://all-app-free.github.io/Luvyx-Spirit-Level/" class="card utility" target="_blank">
             <i class="fas fa-level-up-alt"></i>
             <span>Vodováha</span>
         </a>
-
         <a href="https://all-app-free.github.io/idle-hacker/" class="card game" target="_blank">
             <i class="fas fa-terminal"></i>
             <span>Idle Hacker</span>
+        </a>
+        <a href="https://all-app-free.github.io/ThrumFitness/" class="card fitness" target="_blank">
+            <i class="fas fa-dumbbell"></i>
+            <span>Thrum Fitness</span>
         </a>
     </div>
 
     <script>
         function updateTime() {
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            document.getElementById('clock').textContent = `${hours}:${minutes}`;
-            const options = { weekday: 'long', day: 'numeric', month: 'long' };
-            document.getElementById('date').textContent = now.toLocaleDateString('cs-CZ', options);
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('clock').textContent = h + ':' + m;
+            document.getElementById('date').textContent = now.toLocaleDateString('cs-CZ', { weekday: 'long', day: 'numeric', month: 'long' });
         }
         setInterval(updateTime, 1000);
         updateTime();
